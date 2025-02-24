@@ -22,7 +22,7 @@ public class bt2 {
 
         int result = 0;
         for(int i=n;i>=0;i--){
-            result += coef[i]*  Math.pow(x,i);
+            result += coef[i]  *  Math.pow(x,i);
         }
         System.out.print("Gia tri cua da thuc bac " + n + " tai " + x + " = " + result);
     }

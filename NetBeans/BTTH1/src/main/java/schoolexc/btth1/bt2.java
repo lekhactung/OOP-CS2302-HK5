@@ -1,8 +1,9 @@
+package schoolexc.btth1;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-public class bt3 {
-    public static void emailOutput(Scanner scanner){
+import java.util.*;
+public class bt2 {
+  public static void emailOutput(Scanner scanner){
         System.out.println("Nhap dia chi email cua ban : ");
         String email = scanner.nextLine();
         int atIndex = email.indexOf('@');
@@ -23,25 +24,20 @@ public class bt3 {
         }
         return count;
     }
-    public static void inputf() throws java.io.FileNotFoundException{
-        String path = "resources/data.txt";
-        File f = new File(path);
-        try(Scanner scanner = new Scanner(f)){
-            while(scanner.hasNext()){
-                String hoten = scanner.nextLine();
-                int namsinh = scanner.nextInt();
-                double diem = scanner.nextDouble();
-                scanner.nextLine();
-                System.out.printf("Ho ten : %s - Nam sinh : %d - Diem : %.1f%n",hoten,namsinh,diem);
-            }
 
-        scanner.close();
+    public static void inputf() throws java.io.FileNotFoundException{
+        File f = new File("../resources/data.txt");
+        try(Scanner scanner = new Scanner(f)){
+            System.out.println("hello");
         }
     }
 
     public static void main(String[] args) throws FileNotFoundException{
         Scanner scanner = new Scanner(System.in);
+//        emailOutput(scanner);
+//        int count = uppercaseCount(scanner);
         inputf();
+        System.out.println(uppercaseCount(scanner));
 
-    }
+    }  
 }
