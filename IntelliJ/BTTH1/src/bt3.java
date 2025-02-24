@@ -38,10 +38,15 @@ public class bt3 {
         scanner.close();
         }
     }
+    public static void countW(Scanner scanner){
+        System.out.println("Nhap chuoi : ");
+        String s = scanner.nextLine();
+        System.out.println(s);
 
+    }
     public static void main(String[] args) throws FileNotFoundException{
         Scanner scanner = new Scanner(System.in);
-        inputf();
-
+//        inputf();
+        countW(scanner);
     }
 }
