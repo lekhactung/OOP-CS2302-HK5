@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Locale;
 import java.util.Scanner;
 public class bt3 {
     public static void emailOutput(Scanner scanner){
@@ -17,36 +19,41 @@ public class bt3 {
         int count = 0;
         System.out.println("Nhap 1 chuoi : ");
         String txt = scanner.nextLine();
-//        char ch[] = new char[txt.length()+1];
         for(int i=0;i<txt.length();i++){
             if(Character.isUpperCase(txt.charAt(i))) count++;
         }
         return count;
     }
-    public static void inputf() throws java.io.FileNotFoundException{
-        String path = "resources/data.txt";
-        File f = new File(path);
-        try(Scanner scanner = new Scanner(f)){
-            while(scanner.hasNext()){
-                String hoten = scanner.nextLine();
-                int namsinh = scanner.nextInt();
-                double diem = scanner.nextDouble();
-                scanner.nextLine();
-                System.out.printf("Ho ten : %s - Nam sinh : %d - Diem : %.1f%n",hoten,namsinh,diem);
+    public static void DocFile() throws java.io.FileNotFoundException{
+        String pathIn = "resources/input.txt";
+        String pathOut = "resources/output.txt";
+        File f = new File(pathIn);
+        File fo = new File(pathOut);
+        try(Scanner sc = new Scanner(f); PrintWriter w = new PrintWriter(fo)){
+            String s = "";
+            while(sc.hasNextLine()){
+                s+=sc.nextLine();
             }
-
-        scanner.close();
+            s = s.replaceAll("\\{file}","tap tin");
+            w.println(s);
         }
     }
-    public static void countW(Scanner scanner){
-        System.out.println("Nhap chuoi : ");
-        String s = scanner.nextLine();
+    public static void ChuanHoaChuoi(){
+        String s = "    JAVA    ;;;, ,,,; ;;, , is  ;;,,;;,,,   simPle!  ";
         System.out.println(s);
+        String[] a  = s.trim().split("[,;\\s]+");
+        System.out.println(a.length + " Ky tu trong xau ");
 
+        StringBuilder b = new StringBuilder();
+        for(var v : a){
+            b.append(v.substring(0,1).toUpperCase(Locale.ROOT)).append(v.substring(1).toLowerCase()).append(" ");
+        }
+        System.out.println(b.toString().trim());
     }
+
     public static void main(String[] args) throws FileNotFoundException{
         Scanner scanner = new Scanner(System.in);
-//        inputf();
-        countW(scanner);
+//        DocFile();
+        ChuanHoaChuoi();
     }
 }
