@@ -3,41 +3,30 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 public class bt2 {
-  public static void emailOutput(Scanner scanner){
-        System.out.println("Nhap dia chi email cua ban : ");
-        String email = scanner.nextLine();
-        int atIndex = email.indexOf('@');
-        if(atIndex!=-1){
-            String emailName = email.substring(0,atIndex);
-            System.out.println(emailName);
-        } else{
-            System.out.println("Email khong hop le!");
-        }
-    }
-    public static int uppercaseCount(Scanner scanner){
-        int count = 0;
-        System.out.println("Nhap 1 chuoi : ");
-        String txt = scanner.nextLine();
-//        char ch[] = new char[txt.length()+1];
-        for(int i=0;i<txt.length();i++){
-            if(Character.isUpperCase(txt.charAt(i))) count++;
-        }
-        return count;
-    }
-
-    public static void inputf() throws java.io.FileNotFoundException{
-        File f = new File("../resources/data.txt");
-        try(Scanner scanner = new Scanner(f)){
-            System.out.println("hello");
-        }
-    }
-
-    public static void main(String[] args) throws FileNotFoundException{
+  public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-//        emailOutput(scanner);
-//        int count = uppercaseCount(scanner);
-        inputf();
-        System.out.println(uppercaseCount(scanner));
+        int n = -1;
+        do {
+            System.out.print("Nhap bac cua da thuc (n) :");
+            n = scanner.nextInt();
+            if (n < 0) {
+                System.out.println("Bac cua da thuc phai la so nguyen duong, vui long nhap lai!");
+            }
+        } while (n < 0);
 
-    }  
+        int[] coef = new int[n + 1];
+        System.out.println("Nhập các hệ số của đa thức (từ hệ số của x^0 đến x^" + n + "):");
+        for (int i = 0; i <= n; i++) {
+            coef[i] = scanner.nextInt();
+        }
+
+        System.out.println("\nNhap gia tri x");
+        int x = scanner.nextInt();
+
+        int result = 0;
+        for (int i = n; i >= 0; i--) {
+            result += coef[i] * Math.pow(x, i);
+        }
+        System.out.print("Gia tri cua da thuc bac " + n + " tai " + x + " = " + result);
+    }
 }
