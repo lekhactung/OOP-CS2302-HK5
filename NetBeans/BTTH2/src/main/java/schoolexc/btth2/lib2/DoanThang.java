@@ -47,5 +47,24 @@ public class DoanThang {
         this.diemCuoi = diemCuoi;
     }
     
+    @Override
+    public String toString(){
+        return "Doan Thang [ ( "+diemDau.getHoanhDo() + " , " + diemDau.getTungDo() + ") , (" + diemCuoi.getHoanhDo() + " , " + diemCuoi.getTungDo() +" )]";
+    }
     
+    public double lengthOfLine(){
+        return Diem.distance(diemDau, diemCuoi);
+    }
+    
+    public Diem midPoint(){
+        int x1 = diemDau.getHoanhDo();
+        int x2 = diemCuoi.getHoanhDo();
+        int y1 = diemDau.getTungDo();
+        int y2 = diemDau.getTungDo();
+        return new Diem((x1+x2)/2,(y1+y2)/2);
+    }
+    
+    public boolean isParallel (DoanThang dt1, DoanThang dt2){
+        return false;
+    }
 }
