@@ -1,18 +1,13 @@
-package lkt.tungbtth3;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-//package com.lkt.hv;
+package schoolexc.btth3;
 
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
-import java.time.Month;
 
 /**
  *
- * @author admin
+ * @author LE TUNG
  */
 public class Tester {
 
@@ -24,9 +19,19 @@ public class Tester {
 //        ql.hienThi();
         ql.themHv("src/main/recources/data.txt");
 //        ql.themHv();
-        ql.hienThi();
+//        ql.themHv();
+//        ql.hienThi();
         System.out.println("========");
         ql.nhapDiem();
         ql.hienThi();
+        System.out.println("====Hoc Bong====");
+//        ql.timKiem(1).hienThi();
+        ql.timKiem().forEach(h -> h.hienThi());
+
+        System.out.println("====SX====");
+        ql.sapXep();
+        ql.hienThi();
+        ql.xuatHb("src/main/recources/output.txt");
+
     }
 }

@@ -1,8 +1,8 @@
-/*
+package lkt.tungbtth3;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.lkt.hv;
+//package com.lkt.hv;
 
 import java.io.File;
 import java.io.FileNotFoundException;

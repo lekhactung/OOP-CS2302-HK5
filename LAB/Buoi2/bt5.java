@@ -1,10 +1,11 @@
-/*
+package lkt.btth2_tung;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package lkt.btth2_tung;
+//package lkt.btth2_tung;
 
 import lkt.btth2_tung.lib2.PhanSo;
+
 
 /**
  *
@@ -38,5 +39,6 @@ public class bt5 {
 
         tong.hienThiPS();
         tong.rutGon();
-        tong.hienThiPS();s
+        tong.hienThiPS();
+    }
 }
