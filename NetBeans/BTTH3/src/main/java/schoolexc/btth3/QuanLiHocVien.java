@@ -80,6 +80,10 @@ public class QuanLiHocVien {
             return -Double.compare(t1, t2);
         });
     }
+    
+    public long countYear(){
+        return this.ds.stream().filter(h -> h.nhoHon18()).count();
+    }
 
     public List<HocVien> getDs() {
         return ds;

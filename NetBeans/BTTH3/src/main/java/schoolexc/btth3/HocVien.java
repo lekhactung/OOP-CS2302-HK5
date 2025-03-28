@@ -37,7 +37,7 @@ public class HocVien {
             for(var d: this.diem){
                 System.out.printf("%.1f\t",d);
             }
-            System.err.println("");
+            System.out.println("");
         }
     }
 
@@ -76,7 +76,11 @@ public class HocVien {
         }
         return false;
     }
-
+    
+    public boolean nhoHon18(){
+        return this.ngaySinh.plusYears(18).compareTo(LocalDate.now()) >0;
+    }
+    
     /**
      * @return the dem
      */
