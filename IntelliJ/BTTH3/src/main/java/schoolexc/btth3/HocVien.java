@@ -4,8 +4,13 @@
 
 package schoolexc.btth3;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.DoubleStream;
 
 /**
  *
@@ -36,10 +41,30 @@ public class HocVien {
             for(var d : this.diem){
                 System.out.printf("%.1f\t",d);
             }
+            System.out.printf("Diem TB: %.1f", this.tinhDiemTB());
             System.out.println("");
         }
     }
 
+    public double tinhDiemTB(){
+        if(this.diem!=null){
+            return DoubleStream.of(this.diem).average().getAsDouble();
+        }
+        return 0;
+    }
+    
+    public boolean isHB(){
+        if(this.diem!=null){
+            for(var d : this.diem){
+                if(d<5){
+                    return false;
+                }
+                return this.tinhDiemTB() >= 8;
+            }
+        }
+        return false;
+    }
+    
     public void nhap1HV(){
         System.out.print("Ho ten = ");
         this.ten = CauHinh.SC.nextLine();
@@ -56,10 +81,27 @@ public class HocVien {
 //            this.diem[i] = CauHinh.SC.nextDouble();
         }
     }
+       
+    public boolean nhoHon18(){
+        return this.ngaySinh.plusYears(18).compareTo(LocalDate.now()) > 0;
+    }
+    
+    public boolean tu18Den23(){
+        //a.compareto(b) < 0  <=> a.isbefore(b)
+        //a.compareto(b) > 0  <=> a.isafter(b)
+//        return !this.ngaySinh.plusYears(18).isBefore(LocalDate.now())&&
+//           this.ngaySinh.plusYears(24).isAfter(LocalDate.now());
+        return this.ngaySinh.plusYears(18).compareTo(LocalDate.now()) <0 && 
+                this.ngaySinh.plusYears(24).compareTo(LocalDate.now()) >  0;
+    }
+    
+    public boolean lonHon24(){
+        return this.ngaySinh.plusYears(24).compareTo(LocalDate.now()) < 0;
+    }
     
     
     
-    /**
+    /**;
      * @return the dem
      */
     public static int getDem() {

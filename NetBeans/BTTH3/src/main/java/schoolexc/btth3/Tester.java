@@ -31,7 +31,7 @@ public class Tester {
         System.out.println("====SX====");
         ql.sapXep();
         ql.hienThi();
-        ql.xuatHb("src/main/recources/output.txt");
-
+//        ql.xuatHb("src/main/recources/output.txt");
+       
     }
 }

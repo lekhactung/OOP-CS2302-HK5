@@ -80,6 +80,8 @@ public class HocVien {
     public boolean nhoHon18(){
         return this.ngaySinh.plusYears(18).compareTo(LocalDate.now()) >0;
     }
+
+
     
     /**
      * @return the dem
