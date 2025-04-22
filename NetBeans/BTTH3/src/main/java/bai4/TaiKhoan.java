@@ -4,41 +4,73 @@
  */
 package bai4;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
 /**
  *
  * @author LE TUNG
  */
-public abstract class TaiKhoan {
-
+public class TaiKhoan {
+    
+//    public static final DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     private static int cnt = 0;
     private String stk;
     private String tenTK, sdt, email;
-    private long soTienTrongTK;
+    protected BigDecimal soTien;
     private Date ngayTaoTK;
     private boolean trangThaiTK;
 
-    public TaiKhoan(String stk, String tenTK, String sdt, String email, long soTienTrongTK, Date ngayTaoTK, boolean trangThaiTK) {
-        this.stk = String.format("%06d", ++cnt);
+    {
+        setStk(String.format("%06d", ++cnt));
+        setNgayTaoTK(new Date());
+    }
+
+    public TaiKhoan(String tenTK , BigDecimal soTien) {
         this.tenTK = tenTK;
-        this.sdt = sdt;
-        this.email = email;
-        this.soTienTrongTK = soTienTrongTK;
-        this.ngayTaoTK = ngayTaoTK;
-        this.trangThaiTK = trangThaiTK;
+        this.soTien = soTien;
     }
 
-    public abstract String getLoaiTK();
-
-    public void hienThiThongTin() {
-        System.out.printf("%STK : %d\nTen TK : %s \nSDT : %s \nEmail : %s \nSoTien : %d \n");
+    public boolean isDaoHan(){
+        return true;
+    }
+    
+    public void rutTien(BigDecimal st){
+        if(this.isDaoHan()){
+            if(this.soTien.compareTo(st) >=0 ){
+                this.soTien = this.soTien.subtract(st);
+            }
+        }
+    }
+    
+    public void napTien(BigDecimal st){
+        if(this.isDaoHan()){
+            this.soTien = this.soTien.add(st);
+        }
+    }    
+    
+    public BigDecimal tinhLai(){
+        //tai khoan khong ky han tinh lai~ theo thang nen /12
+        return this.soTien.multiply(new BigDecimal(0.001).divide(new BigDecimal(12)));
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("\n===========\nSo tk: %s\nTen tk: %s\nSo tien: %.1f VND\nLoai TK : khong ky han",
+                stk, tenTK, soTien);
+                
+    }     
+    /**
+     * @return the cnt
+     */
+    public static int getCnt() {
+        return cnt;
     }
 
-//    public void xuatTTTK (){
-//        System.out.printf("%STK : %d\nTen TK : %s \nSDT : %s \nEmail : %s \nSoTien : %d \n" ); 
-//    }
-//    
     /**
      * @return the stk
      */
@@ -96,17 +128,17 @@ public abstract class TaiKhoan {
     }
 
     /**
-     * @return the soTienTrongTK
+     * @return the soTien
      */
-    public long getSoTienTrongTK() {
-        return soTienTrongTK;
+    public BigDecimal getSoTien() {
+        return soTien;
     }
 
     /**
-     * @param soTienTrongTK the soTienTrongTK to set
+     * @param soTien the soTien to set
      */
-    public void setSoTienTrongTK(long soTienTrongTK) {
-        this.soTienTrongTK = soTienTrongTK;
+    public void setSoTien(BigDecimal soTien) {
+        this.soTien = soTien;
     }
 
     /**
@@ -136,5 +168,8 @@ public abstract class TaiKhoan {
     public void setTrangThaiTK(boolean trangThaiTK) {
         this.trangThaiTK = trangThaiTK;
     }
-
+    
+    
+    
+    
 }
