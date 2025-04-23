@@ -38,7 +38,7 @@ public class SanPham {
     public boolean isKM(Class c){
         return this.dskm.stream().filter(k -> c.isInstance(k)).count() >0;
     }
-    
+        
     /**
      * @return the maSP
      */
