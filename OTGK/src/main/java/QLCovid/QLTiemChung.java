@@ -44,7 +44,7 @@ public class QLTiemChung {
 
     public void tiemChung(NguoiDan nd, Vaccine v, String diaDiemTiem) {
         if (nd.getMuiTiem().size() >= 3) {
-            System.out.println("Da tiem du 3 mui!");
+//            System.out.println("Da tiem du 3 mui!");
             return;
         }
         MuiTiem mt = new MuiTiem(v,LocalDate.now(),diaDiemTiem);

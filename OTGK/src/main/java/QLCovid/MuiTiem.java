@@ -22,7 +22,6 @@ public class MuiTiem {
     }
 
     
-    
     public void hienThi(){
         vaccine.hienThi();
         System.out.printf("Ngay tiem: %s\nDia diem tiem:%s\n",ngayTiem,diaDiemTiem);

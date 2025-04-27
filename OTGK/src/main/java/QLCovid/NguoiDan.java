@@ -5,6 +5,7 @@
 package QLCovid;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class NguoiDan {
     private GioiTinh gioiTinh;
     private String SDT;
     private LocalDate ngaySinh;
-    protected List<MuiTiem> muiTiem;
+    protected List<MuiTiem> muiTiem = new ArrayList<>();
 
     public NguoiDan(String cccd, String hoTen, GioiTinh gioiTinh, String SDT, String ngaySinh) {
         this.cccd = cccd;
@@ -30,7 +31,6 @@ public class NguoiDan {
     }
 
     public void hienThi() {
-        System.out.println("-------------");
         if (cccd != null) {
             System.out.printf("So CCCD: %s\n", cccd);
         }
@@ -38,10 +38,11 @@ public class NguoiDan {
         if(muiTiem!=null){
             this.muiTiem.forEach(mt -> mt.hienThi());
         }
+        System.out.println("-------------");
     }
 
-    public void themMuiTiem(MuiTiem...a){
-        this.muiTiem.addAll(Arrays.asList(a));
+    public void themMuiTiem(MuiTiem a){
+        this.muiTiem.add(a);
     }
     
     /**

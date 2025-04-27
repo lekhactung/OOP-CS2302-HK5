@@ -23,8 +23,8 @@ public class NguoiNuocNgoai extends NguoiDan {
 
     @Override
     public void hienThi() {
-        super.hienThi(); 
         System.out.printf("So ho chieu : %s\nQuoc tich : %s\n",soHoChieu,quocTich);
+        super.hienThi(); 
     }
 
     
