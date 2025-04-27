@@ -1,14 +1,10 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
-package bai2;
+package QLGiangVien;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Scanner;
-import javax.imageio.plugins.bmp.BMPImageWriteParam;
 
 /**
  *
@@ -16,29 +12,31 @@ import javax.imageio.plugins.bmp.BMPImageWriteParam;
  */
 public abstract class GiangVien {
 
-    protected final BigDecimal thuLao = new BigDecimal("90000");
     private String hoTen;
     private LocalDate ngaySinh;
-    private String hocHam, hocVi;
-    private LocalDate ngayBDCTac;
-    private double soGioLam;
+    private String hocHam;
+    private String hocVi;
+    private LocalDate ngayBatDauCT;
+    protected double thuLao = 90000;
+    protected double soGioLam;
 
-    public GiangVien(String hoTen, LocalDate ngaySinh, String hocHam, String hocVi, LocalDate ngayBDCTac, double soGioLam) {
+    public GiangVien(String hoTen, LocalDate ngaySinh, String hocHam, String hocVi, double soGioLam) {
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.hocHam = hocHam;
         this.hocVi = hocVi;
-        this.ngayBDCTac = ngayBDCTac;
+        this.ngayBatDauCT = LocalDate.now();
         this.soGioLam = soGioLam;
     }
 
-    public abstract BigDecimal tinhLuong();
- 
-    @Override
-    public String toString() {
-        return String.format("Ho ten : %s\nNgay sinh : %s\nHoc ham : %s\nHoc vi : %s\nNgay BD CTac : %s\n",
-                this.hoTen, this.ngaySinh.format(CauHinh.df), hocHam, hocVi, ngayBDCTac.format(CauHinh.df));
+    public void hienThi() {
+        System.out.printf("Ho ten : %s\nNgay sinh :%s \nHoc ham : %s\nHoc vi :%s\nNgay bat dau cong tac :%s\n",
+                hoTen, ngaySinh.format(CauHinh.df), hocHam, hocVi, ngayBatDauCT.format(CauHinh.df));
     }
+
+    
+
+    public abstract double tinhLuong();
 
     /**
      * @return the hoTen
@@ -97,41 +95,31 @@ public abstract class GiangVien {
     }
 
     /**
-     * @return the ngayBDCTac
+     * @return the ngayBatDauCT
      */
-    public LocalDate getNgayBDCTac() {
-        return ngayBDCTac;
+    public LocalDate getNgayBatDauCT() {
+        return ngayBatDauCT;
     }
 
     /**
-     * @param ngayBDCTac the ngayBDCTac to set
+     * @param ngayBatDauCT the ngayBatDauCT to set
      */
-    public void setNgayBDCTac(LocalDate ngayBDCTac) {
-        this.ngayBDCTac = ngayBDCTac;
+    public void setNgayBatDauCT(LocalDate ngayBatDauCT) {
+        this.ngayBatDauCT = ngayBatDauCT;
     }
 
     /**
      * @return the thuLao
      */
-    public BigDecimal getThuLao() {
+    public double getThuLao() {
         return thuLao;
-    }
-
-    /**
-     * @return the soGioLam
-     */
-    public double getSoGioLam() {
-        return soGioLam;
-    }
-
-    /**
-     * @param soGioLam the soGioLam to set
-     */
-    public void setSoGioLam(double soGioLam) {
-        this.soGioLam = soGioLam;
     }
 
     /**
      * @param thuLao the thuLao to set
      */
+    public void setThuLao(double thuLao) {
+        this.thuLao = thuLao;
+    }
+
 }
