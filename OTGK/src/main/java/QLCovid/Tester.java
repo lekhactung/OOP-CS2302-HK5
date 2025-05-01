@@ -43,9 +43,10 @@ public class Tester {
 
         System.out.println("Nhap nguoi can kiem tra : ");
         String name = sc.nextLine();
-        ql.timKiem(name);
+        ql.kiemTra(name);
 
         System.out.println("----d) ----");
+        ql.nguoiTiemTren2Mui();
         System.out.println("----f) ----");
 
 //        ql.tiemChung(n2, v1, "HCM");

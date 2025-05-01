@@ -53,12 +53,16 @@ public class QLTiemChung {
         System.out.printf("Tiem thanh cong mui thu %d cho %s!\n", nd.getMuiTiem().size(),nd.getHoTen());
     }
 
-    public void timKiem(String kw){
+    public void kiemTra(String kw){
         if( this.ds.stream().filter(n -> n.getHoTen().toLowerCase().contains(kw.toLowerCase())).findFirst().get().duDKTiem() ){
             System.out.println("Du dieu kien tiem!");
             return;
         }
         System.out.println("Khong du dieu kien tiem!");
+    }
+    
+    public void nguoiTiemTren2Mui(){
+        this.ds.stream().filter(n -> n.muiTiem.size()>=2).collect(Collectors.toList()).forEach(n -> n.hienThi());
     }
     
     /**

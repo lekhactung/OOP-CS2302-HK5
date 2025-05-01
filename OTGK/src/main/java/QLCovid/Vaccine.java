@@ -28,7 +28,9 @@ public class Vaccine {
 
     public void hienThi() {
         System.out.printf("--\n");
-        System.out.printf("Ten vacinne : %s\nXuat xu : %s\nSo luong: %d\n", tenVaccine, xuatXu, soLuong);
+//        System.out.printf("Ten vacinne : %s\nXuat xu : %s\nSo luong: %d\n", tenVaccine, xuatXu, soLuong);
+        System.out.printf("Ten vacinne : %s\nXuat xu : %s\n", tenVaccine, xuatXu);
+
     }
 
     /**

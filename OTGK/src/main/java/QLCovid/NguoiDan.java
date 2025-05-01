@@ -53,10 +53,15 @@ public class NguoiDan {
             return false;
         }
         if (!this.muiTiem.isEmpty()) {
-            LocalDate ngayTiemCuoi = this.muiTiem.getLast().getNgayTiem();
-            return LocalDate.now().isAfter(ngayTiemCuoi.plusMonths(3));
+//            LocalDate ngayTiemCuoi = this.muiTiem.getLast().getNgayTiem();
+//            return LocalDate.now().isAfter(ngayTiemCuoi.plusMonths(3));
+            return true;
         }
         return true;
+    }
+    
+    public LocalDate ngayTiemTiepTheo(){
+        return this.muiTiem.getLast().getNgayTiem().plusMonths(3);
     }
     /**
      * @return the cccd
