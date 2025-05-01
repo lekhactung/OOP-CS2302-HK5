@@ -35,16 +35,29 @@ public class NguoiDan {
             System.out.printf("So CCCD: %s\n", cccd);
         }
         System.out.printf("Ho ten: %s\nGioi tinh: %s\n", hoTen, gioiTinh);
-        if(muiTiem!=null){
+        if (muiTiem != null) {
             this.muiTiem.forEach(mt -> mt.hienThi());
         }
         System.out.println("-------------");
     }
 
-    public void themMuiTiem(MuiTiem a){
+    public void themMuiTiem(MuiTiem a) {
         this.muiTiem.add(a);
     }
     
+    public boolean duDKTiem(){
+        if (this.muiTiem.size() >= 3) {
+            return false;
+        }
+        if (this.ngaySinh.plusYears(18).compareTo(LocalDate.now()) > 0) {
+            return false;
+        }
+        if (!this.muiTiem.isEmpty()) {
+            LocalDate ngayTiemCuoi = this.muiTiem.getLast().getNgayTiem();
+            return LocalDate.now().isAfter(ngayTiemCuoi.plusMonths(3));
+        }
+        return true;
+    }
     /**
      * @return the cccd
      */

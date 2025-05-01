@@ -11,6 +11,7 @@ import java.time.LocalDate;
  * @author LE TUNG
  */
 public class MuiTiem {
+
     private Vaccine vaccine;
     private LocalDate ngayTiem;
     private String diaDiemTiem;
@@ -21,11 +22,11 @@ public class MuiTiem {
         this.diaDiemTiem = diaDiemTiem;
     }
 
-    
-    public void hienThi(){
+    public void hienThi() {
         vaccine.hienThi();
-        System.out.printf("Ngay tiem: %s\nDia diem tiem:%s\n",ngayTiem,diaDiemTiem);
+        System.out.printf("Ngay tiem: %s\nDia diem tiem:%s\n", ngayTiem, diaDiemTiem);
     }
+
     /**
      * @return the vaccine
      */
@@ -67,6 +68,5 @@ public class MuiTiem {
     public void setDiaDiemTiem(String diaDiemTiem) {
         this.diaDiemTiem = diaDiemTiem;
     }
-    
-    
+
 }

@@ -33,6 +33,7 @@ public class QLTiemChung {
         this.ds.forEach(nd -> nd.hienThi());
     }
 
+    
     public void hienThiVaccine() {
         System.out.println("----VACCINE----");
         this.dsvc.forEach(vc -> vc.hienThi());
@@ -43,15 +44,23 @@ public class QLTiemChung {
     }
 
     public void tiemChung(NguoiDan nd, Vaccine v, String diaDiemTiem) {
-        if (nd.getMuiTiem().size() >= 3) {
-//            System.out.println("Da tiem du 3 mui!");
+        if(!nd.duDKTiem()){
+            System.out.println("Khong du dieu kien tiem!");
             return;
         }
-        MuiTiem mt = new MuiTiem(v,LocalDate.now(),diaDiemTiem);
+        MuiTiem mt = new MuiTiem(v, LocalDate.now(), diaDiemTiem);
         nd.themMuiTiem(mt);
-
+        System.out.printf("Tiem thanh cong mui thu %d cho %s!\n", nd.getMuiTiem().size(),nd.getHoTen());
     }
 
+    public void timKiem(String kw){
+        if( this.ds.stream().filter(n -> n.getHoTen().toLowerCase().contains(kw.toLowerCase())).findFirst().get().duDKTiem() ){
+            System.out.println("Du dieu kien tiem!");
+            return;
+        }
+        System.out.println("Khong du dieu kien tiem!");
+    }
+    
     /**
      * @return the ds
      */
