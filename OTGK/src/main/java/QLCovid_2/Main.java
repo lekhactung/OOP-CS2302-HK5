@@ -6,6 +6,7 @@ package QLCovid_2;
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
 
 /**
  *
@@ -44,5 +45,8 @@ public class Main {
         //e
         System.out.println("======e)======");
         ql.kiemTraDKTiemChungNguoiDan("Triet");
+        System.out.println("======f)======");
+        ql.sapXep();
+
     }
 }

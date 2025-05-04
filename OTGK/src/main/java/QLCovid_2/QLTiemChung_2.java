@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import QLCovid_2.MuiTiem_2;
+import java.util.Comparator;
 
 /**
  *
@@ -61,6 +62,41 @@ public class QLTiemChung_2 {
         }else {
             System.out.println("Khong du dieu kien tiem!");
         }
+    }
+    
+    public void sapXep(){
+        dsvc.stream()
+        .sorted(Comparator
+            .comparing(Vaccine::getXuatXu)
+            .thenComparing((v1, v2) -> {
+                long count1 = ds.stream()
+                    .filter(n -> n.getMuiTiem().stream()
+                        .map(MuiTiem_2::getVaccine)
+                        .distinct()
+                        .anyMatch(v -> v.equals(v1)))
+                    .count();
+
+                long count2 = ds.stream()
+                    .filter(n -> n.getMuiTiem().stream()
+                        .map(MuiTiem_2::getVaccine)
+                        .distinct()
+                        .anyMatch(v -> v.equals(v2)))
+                    .count();
+
+                return Long.compare(count2, count1); // giảm dần
+            })
+        )
+        .forEach(v -> {
+            long soNguoi = ds.stream()
+                .filter(n -> n.getMuiTiem().stream()
+                    .map(MuiTiem_2::getVaccine)
+                    .distinct()
+                    .anyMatch(vac -> vac.equals(v)))
+                .count();
+
+            System.out.printf("Ten vaccine: %s | Xuat xu: %s | So nguoi da tiem: %d\n",
+                v.gettenVaccine(), v.getXuatXu(), soNguoi);
+        });
     }
     
     public List<Vaccine> getDsvc() {
