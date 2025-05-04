@@ -35,7 +35,9 @@ public class QLTiemChung_2 {
     }
 
     public void hienThiNguoiNuocNgoai() {
-        this.ds.stream().filter(n -> n instanceof NguoiNuocNgoai).collect(Collectors.toList()).forEach(n -> n.hienThi());
+        this.ds.stream().filter(n -> n instanceof NguoiNuocNgoai)
+                .collect(Collectors.toList())
+                .forEach(n -> n.hienThi());
     }
 
     public void themMuiTiem(NguoiDan_2 nd, Vaccine vc, String diaDiemTiem) {
@@ -45,27 +47,29 @@ public class QLTiemChung_2 {
         }
         MuiTiem_2 muiTiem = new MuiTiem_2(vc, LocalDate.now(), diaDiemTiem);
         nd.themMuiTiem(muiTiem);
-        System.out.printf("Da tiem thanh cong cho %s mui thu %d\n",nd.getHoTen(),nd.getMuiTiem().size());
+        System.out.printf("Da tiem thanh cong cho %s mui thu %d\n", nd.getHoTen(), nd.getMuiTiem().size());
     }
 
-    public void hienThiThongTinTiemChung(){
+    public void hienThiThongTinTiemChung() {
         this.ds.forEach(n -> n.hienThiThongTinTiemChung());
     }
-    
-    public List<NguoiDan_2> dsNguoiDanTren2Mui(){
-        return this.ds.stream().filter(n -> n.getMuiTiem().size()>=2).collect(Collectors.toList());
+
+    public List<NguoiDan_2> dsNguoiDanTren2Mui() {
+        return this.ds.stream().filter(n -> n.getMuiTiem().size() >= 2)
+                .collect(Collectors.toList());
     }
-    
-    public void kiemTraDKTiemChungNguoiDan(String kw){
-        if(this.ds.stream().filter(n -> n.getHoTen().toLowerCase().contains(kw.toLowerCase())).findFirst().get().duDKTiem()){
+
+    public void kiemTraDKTiemChungNguoiDan(String kw) {
+        if (this.ds.stream().filter(n -> n.getHoTen().toLowerCase().contains(kw.toLowerCase()))
+                .findFirst().get().duDKTiem()) {
             System.out.println("Du dieu kien tiem!");
-        }else {
+        } else {
             System.out.println("Khong du dieu kien tiem!");
         }
     }
-    
-    public void sapXep(){
-        dsvc.stream()
+
+   public void sapXep() {
+    dsvc.stream()
         .sorted(Comparator
             .comparing(Vaccine::getXuatXu)
             .thenComparing((v1, v2) -> {
@@ -94,11 +98,11 @@ public class QLTiemChung_2 {
                     .anyMatch(vac -> vac.equals(v)))
                 .count();
 
-            System.out.printf("Ten vaccine: %s | Xuat xu: %s | So nguoi da tiem: %d\n",
+            System.out.printf("Ten vaccine: %s | Xuat xu: %s | So nguoii da tiem: %d\n",
                 v.gettenVaccine(), v.getXuatXu(), soNguoi);
         });
-    }
-    
+}
+
     public List<Vaccine> getDsvc() {
         return dsvc;
     }
