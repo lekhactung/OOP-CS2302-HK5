@@ -68,40 +68,33 @@ public class QLTiemChung_2 {
         }
     }
 
-   public void sapXep() {
-    dsvc.stream()
-        .sorted(Comparator
-            .comparing(Vaccine::getXuatXu)
-            .thenComparing((v1, v2) -> {
-                long count1 = ds.stream()
-                    .filter(n -> n.getMuiTiem().stream()
-                        .map(MuiTiem_2::getVaccine)
-                        .distinct()
-                        .anyMatch(v -> v.equals(v1)))
-                    .count();
+    public void sapXep() {
+        dsvc.stream()
+                .sorted((v1, v2) -> {
+                    int cmp = v1.getXuatXu().compareTo(v2.getXuatXu());
+                    if (cmp != 0) {
+                        return cmp;
+                    }
 
-                long count2 = ds.stream()
-                    .filter(n -> n.getMuiTiem().stream()
-                        .map(MuiTiem_2::getVaccine)
-                        .distinct()
-                        .anyMatch(v -> v.equals(v2)))
-                    .count();
+                    long soNguoi1 = demSoNguoiDaTiem(v1);
+                    long soNguoi2 = demSoNguoiDaTiem(v2);
+                    return Long.compare(soNguoi2, soNguoi1); // giảm dần
+                })
+                .forEach(v -> {
+                    long soNguoi = demSoNguoiDaTiem(v);
+                    System.out.printf("Tên vaccine: %s | Xuất xứ: %s | Số người đã tiêm: %d\n",
+                            v.gettenVaccine(), v.getXuatXu(), soNguoi);
+                });
+    }
 
-                return Long.compare(count2, count1); // giảm dần
-            })
-        )
-        .forEach(v -> {
-            long soNguoi = ds.stream()
+    private long demSoNguoiDaTiem(Vaccine vaccine) {
+        return ds.stream()
                 .filter(n -> n.getMuiTiem().stream()
-                    .map(MuiTiem_2::getVaccine)
-                    .distinct()
-                    .anyMatch(vac -> vac.equals(v)))
+                .map(MuiTiem_2::getVaccine)
+                .distinct()
+                .anyMatch(v -> v.equals(vaccine)))
                 .count();
-
-            System.out.printf("Ten vaccine: %s | Xuat xu: %s | So nguoii da tiem: %d\n",
-                v.gettenVaccine(), v.getXuatXu(), soNguoi);
-        });
-}
+    }
 
     public List<Vaccine> getDsvc() {
         return dsvc;
