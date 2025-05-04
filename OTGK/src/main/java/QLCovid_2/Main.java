@@ -19,6 +19,10 @@ public class Main {
         Vaccine v2 = new Vaccine("VC02", "Russia", 10);
         Vaccine v3 = new Vaccine("VC03", "France", 10);
         Vaccine v4 = new Vaccine("VC04", "China", 10);
+        Vaccine v5 = new Vaccine("VC05", "China", 10);
+        Vaccine v6 = new Vaccine("VC06", "China", 10);
+        Vaccine v7 = new Vaccine("VC07", "USA", 10);
+        Vaccine v8 = new Vaccine("VC08", "France", 10);
 
         NguoiDan_2 n1 = new NguoiDan_2("01", "Tung", GioiTinh.NAM, "0123", "07/10/2005");
         NguoiDan_2 n2 = new NguoiNuocNgoai("02", "Triet", GioiTinh.NAM, "0234", "11/02/2005", "NG01", "USA");
@@ -27,7 +31,7 @@ public class Main {
         //a
         System.out.println("======a)======");
         QLTiemChung_2 ql = new QLTiemChung_2();
-        ql.themVaccine(v1, v2, v3, v4);
+        ql.themVaccine(v1, v2, v3, v4, v5, v6, v7, v8);
         ql.hienThiVaccine();
         //b
         System.out.println("======b)======");

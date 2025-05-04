@@ -75,19 +75,19 @@ public class QLTiemChung_2 {
                     if (cmp != 0) {
                         return cmp;
                     }
-
-                    long soNguoi1 = demSoNguoiDaTiem(v1);
-                    long soNguoi2 = demSoNguoiDaTiem(v2);
-                    return Long.compare(soNguoi2, soNguoi1); // giảm dần
+                    return Long.compare(demSoNguoiDaTiem(v1), demSoNguoiDaTiem(v2)); // giảm dần
                 })
                 .forEach(v -> {
-                    long soNguoi = demSoNguoiDaTiem(v);
-                    System.out.printf("Tên vaccine: %s | Xuất xứ: %s | Số người đã tiêm: %d\n",
-                            v.gettenVaccine(), v.getXuatXu(), soNguoi);
+                    System.out.printf("Ten vaccine: %s | Xuat xu: %s | So nguoi da tiem: %d\n",
+                            v.gettenVaccine(), v.getXuatXu(), demSoNguoiDaTiem(v));
                 });
     }
 
-    private long demSoNguoiDaTiem(Vaccine vaccine) {
+//    public void sapXep(){
+//        this.dsvc.stream().sorted((v1,v2) -> v1.getXuatXu().compareTo(v2.getXuatXu())).forEach(v -> v.hienThi());
+//    }
+    
+    private Long demSoNguoiDaTiem(Vaccine vaccine) {
         return ds.stream()
                 .filter(n -> n.getMuiTiem().stream()
                 .map(MuiTiem_2::getVaccine)
