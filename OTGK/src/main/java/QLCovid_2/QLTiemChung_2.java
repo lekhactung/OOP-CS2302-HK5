@@ -64,7 +64,7 @@ public class QLTiemChung_2 {
                 .findFirst().get().duDKTiem()) {
             System.out.println("Du dieu kien tiem!");
         } else {
-            System.out.println("Khong du dieu kien tiem!");
+            System.out.println("Khong du dieu kien tiem!"); 
         }
     }
 

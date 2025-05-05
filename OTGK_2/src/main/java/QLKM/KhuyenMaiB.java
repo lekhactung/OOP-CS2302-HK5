@@ -1,10 +1,11 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package QLKhuyenMai;
+package QLKM;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,19 +14,20 @@ import java.util.List;
  */
 public class KhuyenMaiB extends KhuyenMai {
 
-    private List<String> dichVu = new ArrayList<>();
-
-    public KhuyenMaiB(List<String> dichVu) {
-        this.maKM = String.format("B%d - ", (int) (Math.random() * 9999 + 1000));
-        this.dichVu = dichVu;
-    }
+    private List<String> dichVuKM = new ArrayList<>();
 
     @Override
     public String toString() {
         String s = super.toString();
-        for (var d : this.dichVu) {
-            s += String.format("%s \t", d);
+        for(var d : this.dichVuKM){
+            s += String.format("\t%s",d);
         }
         return s;
     }
+
+    public KhuyenMaiB(String... a) {
+        maKM = String.format("-B%04d", (int) (Math.random() * 9999 + 100));
+        this.dichVuKM.addAll(Arrays.asList(a));
+    }
+
 }

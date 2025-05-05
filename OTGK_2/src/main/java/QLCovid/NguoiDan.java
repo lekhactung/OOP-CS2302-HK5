@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package QLCovid_2;
+package QLCovid;
 
 import java.time.LocalDate;
+import java.time.temporal.TemporalQueries;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,32 +13,26 @@ import java.util.List;
  *
  * @author LE TUNG
  */
-public class NguoiDan_2 {
+public class NguoiDan {
 
     private String cccd;
     private String hoTen;
     private GioiTinh gioiTinh;
-    private String sdt;
     private LocalDate ngaySinh;
-    private List<MuiTiem_2> muiTiem = new ArrayList<>();
+    private List<MuiTiem> muiTiem = new ArrayList<>();
 
-    public NguoiDan_2(String cccd, String hoTen, GioiTinh gioiTinh, String sdt, String ngaySinh) {
+    public NguoiDan(String cccd, String hoTen, GioiTinh gioiTinh, String ngaySinh) {
         this.cccd = cccd;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
-        this.sdt = sdt;
         this.ngaySinh = LocalDate.parse(ngaySinh, CauHinh.df);
     }
 
     public void hienThi() {
         if (cccd != null) {
-            System.out.printf("CCCD : %s\n", cccd);
+            System.out.printf("CCCD: %s\nHo ten: %s\nGioi tinh: %s\nNgay sinh: %s\n", cccd, hoTen, gioiTinh, ngaySinh);
         }
-        System.out.printf("Ho ten: %s\nGioi tinh: %s\n", hoTen, gioiTinh);
-    }
-
-    public void themMuiTiem(QLCovid_2.MuiTiem_2 a) {
-        this.muiTiem.add(a);
+//        this.muiTiem.forEach(v -> v.hienThi());
     }
 
     public boolean duDKTiem() {
@@ -48,18 +43,22 @@ public class NguoiDan_2 {
             return false;
         }
         if (!muiTiem.isEmpty()) {
-            return !this.muiTiem.getLast().getNgayTiem().plusMonths(3).isAfter(LocalDate.now());
-//            return true;
+//            return !this.muiTiem.getLast().getNgayTiem().plusMonths(3).isAfter(LocalDate.now());
+            return true;
         }
         return true;
     }
 
     public void hienThiThongTinTiemChung() {
-        if (muiTiem.size()>=2) {
-            hienThi();
+        if (this.muiTiem.size() >= 2) {
+            this.hienThi();
             this.muiTiem.forEach(m -> m.hienThi());
-            System.out.printf("Ngay tiem tiep theo: %s\n",muiTiem.getLast().ngayTiemTiepTheo());
+            System.out.printf("Ngay tiem tiep theo: %s\n", muiTiem.getLast().ngayTiemTiepTheo());
         }
+    }
+
+    public void themMuiTiem(MuiTiem m) {
+        this.muiTiem.add(m);
     }
 
     /**
@@ -105,20 +104,6 @@ public class NguoiDan_2 {
     }
 
     /**
-     * @return the sdt
-     */
-    public String getSdt() {
-        return sdt;
-    }
-
-    /**
-     * @param sdt the sdt to set
-     */
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
-    }
-
-    /**
      * @return the ngaySinh
      */
     public LocalDate getNgaySinh() {
@@ -135,14 +120,14 @@ public class NguoiDan_2 {
     /**
      * @return the muiTiem
      */
-    public List<MuiTiem_2> getMuiTiem() {
+    public List<MuiTiem> getMuiTiem() {
         return muiTiem;
     }
 
     /**
      * @param muiTiem the muiTiem to set
      */
-    public void setMuiTiem(List<MuiTiem_2> muiTiem) {
+    public void setMuiTiem(List<MuiTiem> muiTiem) {
         this.muiTiem = muiTiem;
     }
 
