@@ -48,7 +48,7 @@ public class Bai04 {
 //        int n = sc.nextInt();
 //        int[] a = nhapMang(n);
         int []a = {2,3,4,5,6,7,8,9,10,11};
-        xuatMang(a);
+        xuatMang(a);    
         System.out.println(IntStream.of(a).sum());
         System.out.println(IntStream.of(a).max().getAsInt());
         System.out.println(IntStream.of(a).min().getAsInt());
