@@ -33,11 +33,11 @@ public class NguoiDan_2 {
         if (cccd != null) {
             System.out.printf("CCCD : %s\n", cccd);
         }
-        System.out.printf("Ho ten: %s\nGioi tinh: %s\n", hoTen, gioiTinh);
+        System.out.printf("Ho ten: %s\nGioi tinh: %s\nNgay sinh: %s\n", hoTen, gioiTinh,ngaySinh);
     }
 
-    public void themMuiTiem(QLCovid_2.MuiTiem_2 a) {
-        this.muiTiem.add(a);
+    public void themMuiTiem(QLCovid_2.MuiTiem_2 mt) {
+        this.muiTiem.add(mt);
     }
 
     public boolean duDKTiem() {

@@ -46,7 +46,7 @@ public class QLTiemChung_2 {
             return;
         }
         MuiTiem_2 muiTiem = new MuiTiem_2(vc, LocalDate.now(), diaDiemTiem);
-        nd.themMuiTiem(muiTiem);
+         nd.themMuiTiem(muiTiem);
         System.out.printf("Da tiem thanh cong cho %s mui thu %d\n", nd.getHoTen(), nd.getMuiTiem().size());
     }
 
